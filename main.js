@@ -46,6 +46,7 @@ for (const q of QUESTIONS){
         quest.question = q.question
         quest.num = q.showNumber
         quest.answer = q.answer
+        quest.category = q.category
         arr2.push(quest)
     }
 }
@@ -57,6 +58,7 @@ for (const q of QUESTIONS){
         quest.question = q.question
         quest.num = q.showNumber
         quest.answer = q.answer
+        quest.category = q.category
         arr3.push(quest)
     }
 }
@@ -68,6 +70,7 @@ for (const q of QUESTIONS){
         quest.question = q.question
         quest.num = q.showNumber
         quest.answer = q.answer
+        quest.category = q.category
         arr4.push(quest)
     }
 }
@@ -79,6 +82,7 @@ for (const q of QUESTIONS){
         quest.question = q.question
         quest.num = q.showNumber
         quest.answer = q.answer
+        quest.category = q.category
         arr5.push(quest)
     }
 }
@@ -99,11 +103,12 @@ if (previousScoreShow !== null){
     console.log(previousScore)
 }
 
+let block1;
 
 const cell1 = $('#one')
 cell1.click(function(e){
     const block = e.target
-    const block1 = $(block)
+    block1 = $(block)
     if(block1.text() === '$100'){
         obj = arr1[Math.floor((Math.random()*arr1.length))]
         const cat = obj.category
@@ -111,11 +116,86 @@ cell1.click(function(e){
         categoryDiv.text(cat)
         questionDiv.text(text)
     }
-    submit.click(function (){
-        const answerInput = $('#answer')
-        const answerValue = answerInput.val()
-        console.log(obj)
-        console.log(answerValue)
+    const answerInputClear = $('#answer')
+    answerInputClear.val('')  
+})
+
+
+
+
+const cell2 = $('#two')
+cell2.click(function(e){
+    const block = e.target
+    block1 = $(block)
+    if(block1.text() === '$200'){
+        obj = arr2[Math.floor((Math.random()*arr2.length))]
+        const cat = obj.category
+        const text = obj.question
+        categoryDiv.text(cat)
+        questionDiv.text(text)
+    }
+    const answerInputClear = $('#answer')
+    answerInputClear.val('')  
+})
+
+
+
+const cell3 = $('#three')
+cell3.click(function(e){
+    const block = e.target
+    block1 = $(block)
+    if(block1.text() === '$300'){
+        obj = arr3[Math.floor((Math.random()*arr3.length))]
+        const cat = obj.category
+        const text = obj.question
+        categoryDiv.text(cat)
+        questionDiv.text(text)
+    }
+    const answerInputClear = $('#answer')
+    answerInputClear.val('')  
+})
+
+
+
+const cell4 = $('#four')
+cell4.click(function(e){
+    const block = e.target
+    block1 = $(block)
+    if(block1.text() === '$400'){
+        obj = arr4[Math.floor((Math.random()*arr4.length))]
+        const cat = obj.category
+        const text = obj.question
+        categoryDiv.text(cat)
+        questionDiv.text(text)
+    }
+    const answerInputClear = $('#answer')
+    answerInputClear.val('')  
+})
+
+
+
+const cell5 = $('#five')
+cell5.click(function(e){
+    const block = e.target
+    block1 = $(block)
+    if(block1.text() === '$500'){
+        obj = arr5[Math.floor((Math.random()*arr5.length))]
+        const cat = obj.category
+        const text = obj.question
+        categoryDiv.text(cat)
+        questionDiv.text(text)
+    }
+    const answerInputClear = $('#answer')
+    answerInputClear.val('')  
+})
+
+
+
+
+submit.click(function (){
+    const answerInput = $('#answer')
+    const answerValue = answerInput.val()
+    if(block1.text() === '$100'){
         for (const item of arr1){
             if(item.question === obj.question){
                 if (answerValue.toUpperCase() === obj.answer.toUpperCase()){
@@ -133,139 +213,86 @@ cell1.click(function(e){
                     categoryDiv.text('')
                 }
             }
-        } 
-    })
-    const answerInputClear = $('#answer')
-    answerInputClear.val('')  
+        }
+    } 
+    if(block1.text() === '$200'){
+        for (const item of arr2){
+            if(item.question === obj.question){
+                if (answerValue.toUpperCase() === obj.answer.toUpperCase()){
+                    questionDiv.text('Correct!')
+                    console.log(scoreSum)
+                    scoreSum+=200
+                    const totalScore = scoreText + scoreSum.toString()
+                    scoreShow.text(totalScore)
+                    window.localStorage.setItem('prevScore',totalScore)
+                    window.localStorage.setItem('previousScore',scoreSum)
+                    categoryDiv.text('')
+                } else{
+                    text = 'Incorrect. The right answer is ' + obj.answer + '.'
+                    questionDiv.text(text)
+                    categoryDiv.text('')
+                }
+            }
+        }
+    } 
+    if(block1.text() === '$300'){
+        for (const item of arr3){
+            if(item.question === obj.question){
+                if (answerValue.toUpperCase() === obj.answer.toUpperCase()){
+                    questionDiv.text('Correct!')
+                    console.log(scoreSum)
+                    scoreSum+=300
+                    const totalScore = scoreText + scoreSum.toString()
+                    scoreShow.text(totalScore)
+                    window.localStorage.setItem('prevScore',totalScore)
+                    window.localStorage.setItem('previousScore',scoreSum)
+                    categoryDiv.text('')
+                } else{
+                    text = 'Incorrect. The right answer is ' + obj.answer + '.'
+                    questionDiv.text(text)
+                    categoryDiv.text('')
+                }
+            }
+        }
+    } 
+    if(block1.text() === '$400'){
+        for (const item of arr4){
+            if(item.question === obj.question){
+                if (answerValue.toUpperCase() === obj.answer.toUpperCase()){
+                    questionDiv.text('Correct!')
+                    console.log(scoreSum)
+                    scoreSum+=400
+                    const totalScore = scoreText + scoreSum.toString()
+                    scoreShow.text(totalScore)
+                    window.localStorage.setItem('prevScore',totalScore)
+                    window.localStorage.setItem('previousScore',scoreSum)
+                    categoryDiv.text('')
+                } else{
+                    text = 'Incorrect. The right answer is ' + obj.answer + '.'
+                    questionDiv.text(text)
+                    categoryDiv.text('')
+                }
+            }
+        }
+    } 
+    if(block1.text() === '$500'){
+        for (const item of arr5){
+            if(item.question === obj.question){
+                if (answerValue.toUpperCase() === obj.answer.toUpperCase()){
+                    questionDiv.text('Correct!')
+                    console.log(scoreSum)
+                    scoreSum+=500
+                    const totalScore = scoreText + scoreSum.toString()
+                    scoreShow.text(totalScore)
+                    window.localStorage.setItem('prevScore',totalScore)
+                    window.localStorage.setItem('previousScore',scoreSum)
+                    categoryDiv.text('')
+                } else{
+                    text = 'Incorrect. The right answer is ' + obj.answer + '.'
+                    questionDiv.text(text)
+                    categoryDiv.text('')
+                }
+            }
+        }
+    } 
 })
-
-
-// const cell2 = $('#two')
-// cell2.click(function(e){
-//     const block = e.target
-//     if(block.text = '$200'){
-//         obj = arr2[Math.floor((Math.random()*arr2.length))]
-//         const text = obj.question
-//         questionDiv.text(text)
-//     }
-//     submit.click(function (){
-//         const answerInput = $('#answer')
-//         const answerValue = answerInput.val()
-//         console.log(answerValue)
-//         for (const item of arr2){
-//             if(item.question === obj.question){
-//                 if (answerValue === obj.answer){
-//                     questionDiv.text('Correct!')
-//                     scoreSum+=200
-//                     const totalScore = scoreText + scoreSum.toString()
-//                     scoreShow.text(totalScore)
-//                     window.localStorage.setItem('prevScore',totalScore)
-//                 } else{
-//                     const text = 'Incorrect. The right answer is ' + obj.answer + '.'
-//                     questionDiv.text(text)
-//                 }
-//             }
-//         }
-    
-//     })  
-// })
-
-
-
-// const cell3 = $('#three')
-// cell3.click(function(e){
-//     const block = e.target
-//     if(block.text = '$300'){
-//         obj = arr3[Math.floor((Math.random()*arr3.length))]
-//         const text = obj.question
-//         questionDiv.text(text)
-//     }
-//     submit.click(function (){
-//         const answerInput = $('#answer')
-//         const answerValue = answerInput.val()
-//         console.log(answerValue)
-//         for (const item of arr3){
-//             if(item.question === obj.question){
-//                 if (answerValue === obj.answer){
-//                     questionDiv.text('Correct!')
-//                     scoreSum+=300
-//                     const totalScore = scoreText + scoreSum.toString()
-//                     scoreShow.text(totalScore)
-//                     window.localStorage.setItem('prevScore',totalScore)
-//                 } else{
-//                     const text = 'Incorrect. The right answer is ' + obj.answer + '.'
-//                     questionDiv.text(text)
-//                 }
-//             }
-//         }
-    
-//     })  
-// })
-
-
-
-// const cell4 = $('#four')
-// cell4.click(function(e){
-//     const block = e.target
-//     if(block.text = '$400'){
-//         obj = arr4[Math.floor((Math.random()*arr4.length))]
-//         let text = obj.question
-//         questionDiv.text(text)
-//     }
-//     submit.click(function (){
-//         const answerInput = $('#answer')
-//         const answerValue = answerInput.val()
-//         console.log(answerValue)
-//         for (const item of arr4){
-//             if(item.question === obj.question){
-//                 if (answerValue === obj.answer){
-//                     questionDiv.text('Correct!')
-//                     scoreSum+=400
-//                     const totalScore = scoreText + scoreSum.toString()
-//                     scoreShow.text(totalScore)
-//                     window.localStorage.setItem('prevScore',totalScore)
-//                 } else{
-//                     const text = 'Incorrect. The right answer is ' + obj.answer + '.'
-//                     questionDiv.text(text)
-//                 }
-//             }
-//         }
-    
-//     })  
-// })
-
-
-
-// const cell5 = $('#five')
-// cell5.click(function(e){
-//     const block = e.target
-//     if(block.text = '$500'){
-//         obj = arr5[Math.floor((Math.random()*arr5.length))]
-//         const text = obj.question
-//         questionDiv.text(text)
-//     }
-//     submit.click(function (){
-//         const answerInput = $('#answer')
-//         const answerValue = answerInput.val()
-//         console.log(answerValue)
-//         for (const item of arr5){
-//             if(item.question === obj.question){
-//                 if (answerValue === obj.answer){
-//                     questionDiv.text('Correct!')
-//                     scoreSum+=500
-//                     const totalScore = scoreText + scoreSum.toString()
-//                     scoreShow.text(totalScore)
-//                     window.localStorage.setItem('prevScore',totalScore)
-//                 } else{
-//                     const text = 'Incorrect. The right answer is ' + obj.answer + '.'
-//                     questionDiv.text(text)
-//                 }
-//             }
-//         }
-    
-//     })  
-// })
-
-
-
-
