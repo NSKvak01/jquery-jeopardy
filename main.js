@@ -1,3 +1,10 @@
+function clearGrid() {
+    const container = $('.container');
+    container.html('');
+}
+
+
+
 const body = $('#main')
 const title = $('<h1 id="title">Jeopardy Trivia</h1>')
 body.append(title)
@@ -20,7 +27,7 @@ body.append(fifthRow)
 const inputArea = $('#input-area')
 const questionArea = $('<div id="question-area"><div id="category"></div><div id="question"></div></div>')
 body.append(questionArea)
-const label = $('<label for="answer">Your answer</label/>')
+const label = $('<label for="answer">YOUR ANSWER</label/>')
 const answer = $('<input id="answer"/>')
 const submit = $('<button id="submit">SUBMIT</button>')
 inputArea.append(label)
@@ -49,7 +56,7 @@ if (previousScoreShow !== null){
     scoreShow.text(previousScoreShow)
 }
 
-window.localStorage.getItem('color')
+
 
 function random (){
     const arr1 =[]
@@ -127,8 +134,7 @@ function random (){
         const block = e.target
         block1 = $(block)
         block1.css('backgroundColor',  'grey')
-        
-        const backco = block1.css('backgroundColor',  'grey')
+        const backco = JSON.stringify(block1.css('backgroundColor',  'grey'))
         window.localStorage.setItem('color', backco)
         if(block1.text() === '$100'){
             obj = arr1[Math.floor((Math.random()*arr1.length))]
