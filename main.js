@@ -27,6 +27,30 @@ inputArea.append(label)
 inputArea.append(answer)
 inputArea.append(submit)
 
+const questionDiv = $('#question')
+const categoryDiv = $('#category')
+
+let scoreSum;
+const scoreShow = $('#score')
+const scoreText = 'Your score: $'
+let obj;
+
+const previousScoreShow = window.localStorage.getItem('prevScore')
+const previousScore = window.localStorage.getItem('previousScore')
+console.log(previousScore)
+if(previousScore !== null){
+    scoreSum = parseInt(previousScore)
+} else (
+    scoreSum=0
+)
+console.log(scoreSum)
+
+if (previousScoreShow !== null){
+    scoreShow.text(previousScoreShow)
+}
+
+window.localStorage.getItem('color')
+
 function random (){
     const arr1 =[]
     for (const q of QUESTIONS){
@@ -91,18 +115,10 @@ function random (){
     const questionDiv = $('#question')
     const categoryDiv = $('#category')
 
-    let scoreSum = 0
     const scoreShow = $('#score')
     const scoreText = 'Your score: $'
     let obj;
 
-    const previousScoreShow = window.localStorage.getItem('prevScore')
-    const previousScore = window.localStorage.getItem('previousScore')
-    if (previousScoreShow !== null){
-        scoreShow.text(previousScoreShow)
-        scoreSum = parseInt(previousScore)
-        console.log(previousScore)
-    }
 
     let block1;
 
@@ -110,6 +126,10 @@ function random (){
     cell1.click(function(e){
         const block = e.target
         block1 = $(block)
+        block1.css('backgroundColor',  'grey')
+        
+        const backco = block1.css('backgroundColor',  'grey')
+        window.localStorage.setItem('color', backco)
         if(block1.text() === '$100'){
             obj = arr1[Math.floor((Math.random()*arr1.length))]
             const cat = obj.category
@@ -119,6 +139,7 @@ function random (){
         }
         const answerInputClear = $('#answer')
         answerInputClear.val('')  
+        block1.click(false)
     })
 
 
@@ -128,6 +149,7 @@ function random (){
         cell2.click(function(e){
             const block = e.target
             block1 = $(block)
+            block1.css('backgroundColor',  'grey')
             if(block1.text() === '$200'){
                 obj = arr2[Math.floor((Math.random()*arr2.length))]
                 const cat = obj.category
@@ -137,6 +159,7 @@ function random (){
             }
             const answerInputClear = $('#answer')
             answerInputClear.val('')  
+            block1.click(false)
         })
 
 
@@ -145,6 +168,7 @@ function random (){
         cell3.click(function(e){
             const block = e.target
             block1 = $(block)
+            block1.css('backgroundColor',  'grey')
             if(block1.text() === '$300'){
                 obj = arr3[Math.floor((Math.random()*arr3.length))]
                 const cat = obj.category
@@ -154,6 +178,7 @@ function random (){
             }
             const answerInputClear = $('#answer')
             answerInputClear.val('')  
+            block1.click(false)
         })
 
 
@@ -162,6 +187,7 @@ function random (){
         cell4.click(function(e){
             const block = e.target
             block1 = $(block)
+            block1.css('backgroundColor',  'grey')
             if(block1.text() === '$400'){
                 obj = arr4[Math.floor((Math.random()*arr4.length))]
                 const cat = obj.category
@@ -171,6 +197,7 @@ function random (){
             }
             const answerInputClear = $('#answer')
             answerInputClear.val('')  
+            block1.click(false)
         })
 
 
@@ -179,6 +206,7 @@ function random (){
         cell5.click(function(e){
             const block = e.target
             block1 = $(block)
+            block1.css('backgroundColor',  'grey')
             if(block1.text() === '$500'){
                 obj = arr5[Math.floor((Math.random()*arr5.length))]
                 const cat = obj.category
@@ -188,6 +216,7 @@ function random (){
             }
             const answerInputClear = $('#answer')
             answerInputClear.val('')  
+            block1.click(false)
         })
 
 
@@ -389,28 +418,13 @@ for (const button of catButton){
                 }
             }
 
-            const questionDiv = $('#question')
-            const categoryDiv = $('#category')
-
-            let scoreSum = 0
-            const scoreShow = $('#score')
-            const scoreText = 'Your score: $'
-            let obj;
-
-            const previousScoreShow = window.localStorage.getItem('prevScore')
-            const previousScore = window.localStorage.getItem('previousScore')
-            if (previousScoreShow !== null){
-                scoreShow.text(previousScoreShow)
-                scoreSum = parseInt(previousScore)
-                console.log(previousScore)
-            }
-
             let block1;
 
             const cell1 = $('#one')
             cell1.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$100'){
                     obj = arr1[Math.floor((Math.random()*arr1.length))]
                     const cat = obj.category
@@ -420,6 +434,8 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
+                
             })
 
 
@@ -429,6 +445,7 @@ for (const button of catButton){
             cell2.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$200'){
                     obj = arr2[Math.floor((Math.random()*arr2.length))]
                     const cat = obj.category
@@ -438,6 +455,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -446,6 +464,7 @@ for (const button of catButton){
             cell3.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$300'){
                     obj = arr3[Math.floor((Math.random()*arr3.length))]
                     const cat = obj.category
@@ -455,6 +474,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -463,6 +483,7 @@ for (const button of catButton){
             cell4.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$400'){
                     obj = arr4[Math.floor((Math.random()*arr4.length))]
                     const cat = obj.category
@@ -472,6 +493,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -480,6 +502,7 @@ for (const button of catButton){
             cell5.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$500'){
                     obj = arr5[Math.floor((Math.random()*arr5.length))]
                     const cat = obj.category
@@ -489,6 +512,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -661,28 +685,13 @@ for (const button of catButton){
                 }
             }
 
-            const questionDiv = $('#question')
-            const categoryDiv = $('#category')
-
-            let scoreSum = 0
-            const scoreShow = $('#score')
-            const scoreText = 'Your score: $'
-            let obj;
-
-            const previousScoreShow = window.localStorage.getItem('prevScore')
-            const previousScore = window.localStorage.getItem('previousScore')
-            if (previousScoreShow !== null){
-                scoreShow.text(previousScoreShow)
-                scoreSum = parseInt(previousScore)
-                console.log(previousScore)
-            }
-
             let block1;
 
             const cell1 = $('#one')
             cell1.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$100'){
                     obj = arr1[Math.floor((Math.random()*arr1.length))]
                     const cat = obj.category
@@ -692,6 +701,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -701,6 +711,7 @@ for (const button of catButton){
             cell2.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$200'){
                     obj = arr2[Math.floor((Math.random()*arr2.length))]
                     const cat = obj.category
@@ -710,6 +721,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -718,6 +730,7 @@ for (const button of catButton){
             cell3.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$300'){
                     obj = arr3[Math.floor((Math.random()*arr3.length))]
                     const cat = obj.category
@@ -727,6 +740,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -735,6 +749,7 @@ for (const button of catButton){
             cell4.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$400'){
                     obj = arr4[Math.floor((Math.random()*arr4.length))]
                     const cat = obj.category
@@ -744,6 +759,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -752,6 +768,7 @@ for (const button of catButton){
             cell5.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$500'){
                     obj = arr5[Math.floor((Math.random()*arr5.length))]
                     const cat = obj.category
@@ -761,6 +778,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -933,28 +951,13 @@ for (const button of catButton){
                 }
             }
 
-            const questionDiv = $('#question')
-            const categoryDiv = $('#category')
-
-            let scoreSum = 0
-            const scoreShow = $('#score')
-            const scoreText = 'Your score: $'
-            let obj;
-
-            const previousScoreShow = window.localStorage.getItem('prevScore')
-            const previousScore = window.localStorage.getItem('previousScore')
-            if (previousScoreShow !== null){
-                scoreShow.text(previousScoreShow)
-                scoreSum = parseInt(previousScore)
-                console.log(previousScore)
-            }
-
             let block1;
 
             const cell1 = $('#one')
             cell1.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$100'){
                     obj = arr1[Math.floor((Math.random()*arr1.length))]
                     const cat = obj.category
@@ -964,6 +967,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -973,6 +977,7 @@ for (const button of catButton){
             cell2.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$200'){
                     obj = arr2[Math.floor((Math.random()*arr2.length))]
                     const cat = obj.category
@@ -982,6 +987,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -990,6 +996,7 @@ for (const button of catButton){
             cell3.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$300'){
                     obj = arr3[Math.floor((Math.random()*arr3.length))]
                     const cat = obj.category
@@ -999,6 +1006,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -1007,6 +1015,7 @@ for (const button of catButton){
             cell4.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$400'){
                     obj = arr4[Math.floor((Math.random()*arr4.length))]
                     const cat = obj.category
@@ -1016,6 +1025,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
@@ -1024,6 +1034,7 @@ for (const button of catButton){
             cell5.click(function(e){
                 const block = e.target
                 block1 = $(block)
+                block1.css('backgroundColor',  'grey')
                 if(block1.text() === '$500'){
                     obj = arr5[Math.floor((Math.random()*arr5.length))]
                     const cat = obj.category
@@ -1033,6 +1044,7 @@ for (const button of catButton){
                 }
                 const answerInputClear = $('#answer')
                 answerInputClear.val('')  
+                block1.click(false)
             })
 
 
